@@ -54,8 +54,24 @@ const addToCart = async (itemId , size) => {
      setCartItems(cartData);
     }
 
+    const getCartAmount = async => {
+        let totalAmount = 0;
+        for(const items in cartItems){
+            let iteminfo = products.find((product)=>products._id === items);
+            for(const item in cartItems[items]){
+                try {
+                   if(cartItems[items][item]>0){
+                    totalAmount += iteminfo.price* cartItems[items][item];
+                   }
+                } catch (error) {
+                    
+                }
+            }
+        }
+    }
+
     const value = {
-     products , currency , delivery_fee , search , setSearch , showSearch , setShowSearch , cartItems , addToCart , getCartCount , updateQuantity
+     products , currency , delivery_fee , search , setSearch , showSearch , setShowSearch , cartItems , addToCart , getCartCount , updateQuantity , getCartAmount
     }
     return (
         <ShopContext.Provider value={value}>
