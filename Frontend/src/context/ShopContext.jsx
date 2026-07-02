@@ -54,10 +54,10 @@ const addToCart = async (itemId , size) => {
      setCartItems(cartData);
     }
 
-    const getCartAmount = async => {
+    const getCartAmount = () => {
         let totalAmount = 0;
         for(const items in cartItems){
-            let iteminfo = products.find((product)=>products._id === items);
+            let iteminfo = products.find((product)=>product._id === items);
             for(const item in cartItems[items]){
                 try {
                    if(cartItems[items][item]>0){
@@ -68,6 +68,7 @@ const addToCart = async (itemId , size) => {
                 }
             }
         }
+       return totalAmount; 
     }
 
     const value = {
