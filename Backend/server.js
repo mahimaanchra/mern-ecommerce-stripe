@@ -8,7 +8,7 @@ import userRouter from "./routes/userRoute.js";
 dns.setDefaultResultOrder('ipv4first'); 
 const app = express();
 const port = process.env.PORT || 4000;
-//connectDB();
+connectDB();
 connectCloudinary();
 
 
