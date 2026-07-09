@@ -1,6 +1,6 @@
 // function to add product 
 const addProduct = async (req , res) => {
-
+  
 }
 
 //function to list product
