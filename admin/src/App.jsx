@@ -4,6 +4,9 @@ import Sidebar from './components/Sidebar'
 import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login';
 import { ToastContainer} from 'react-toastify';
+import Add from './pages/Add'
+import List from './pages/List'
+import Orders from './pages/Orders'
 
 export const  backendUrl = import.meta.env.VITE_BACKEND_URL;
 
