@@ -6,6 +6,7 @@ import dns from 'dns';
 import connectCloudinary from "./config/cloudinary.js";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRoute.js";
+import cartRouter from "./routes/cartRoute.js";
 dns.setDefaultResultOrder('ipv4first'); 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -21,6 +22,7 @@ app.use(cors())
 // API endpoints
 app.use('/api/user' , userRouter)
 app.use('/api/product' , productRouter)
+app.use('/api/cart' , cartRouter)
 
 
 app.get('/' , (req , resp)=>{
