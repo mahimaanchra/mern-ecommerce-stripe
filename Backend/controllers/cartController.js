@@ -15,7 +15,7 @@ const addToCart = async (req , res) => {
        cartData[itemId][size] = 1; 
     }
    }else{
-    cartData[itemId] = {}
+    cartData[itemId] = {};
      cartData[itemId][size] = 1;
    }
    await userModel.findByIdAndUpdate(userId,{cartData})
