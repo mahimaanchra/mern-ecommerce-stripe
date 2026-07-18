@@ -21,12 +21,21 @@ const addToCart = async (req , res) => {
    await userModel.findByIdAndUpdate(userId,{cartData})
    response.json({succes:true , message: "Added to cart"})
   } catch (error) {
-    
+    response.json({success:false , message:error.message});
   }
 }
 // update cart
 const updateCart = async (req , res) => {
-
+    try {
+      const {userId , itemId , size , quantity} = req.body;
+      const userData = await userModel.findById(userId);
+      let cartData = userData.cartData;
+      cartData[itemId][size] = quantity;
+      await userModel.findByIdAndUpdate(userId , {cartData});
+      res.json({success:true ,message:"cart updated" });
+    } catch (error) {
+      response.json({success:false , message:error.message});
+    }
 }
 // get cart
 const getUserCart = async (req , res) => {
