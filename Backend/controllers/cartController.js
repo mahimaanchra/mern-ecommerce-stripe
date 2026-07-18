@@ -1,5 +1,5 @@
 import React from 'react'
-import userModel from "../models/userModel"
+import userModel from "../models/userModel.js"
 import { response } from 'express';
 
 // add to cart
