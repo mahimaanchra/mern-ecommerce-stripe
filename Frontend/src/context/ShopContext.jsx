@@ -132,7 +132,7 @@ useEffect(()=>{
 })
 
     const value = {
-     products , currency , delivery_fee , search , setSearch , showSearch , setShowSearch , cartItems , addToCart , getCartCount , updateQuantity , getCartAmount , navigate , backendUrl , token , setToken
+     products , currency , delivery_fee , search , setSearch , showSearch , setShowSearch , cartItems , addToCart , getCartCount , updateQuantity , getCartAmount , navigate , backendUrl ,setCartItems, token , setToken
     }
     return (
         <ShopContext.Provider value={value}>
