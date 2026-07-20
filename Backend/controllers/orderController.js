@@ -1,7 +1,26 @@
+import orderModel from "../models/orderModel.js"
+import userModel from "../models/userModel.js";
 //placing orders using cod methods
 
 const placeOrder = async (req , res) => {
-
+ try {
+    const {userId , items , amount , address } = req.body;
+    const orderData = {
+     userId ,
+     items , 
+     amount , 
+     address ,
+     paymentMethod:"COD",
+     payment:false,
+     date:Date.now()
+    }
+   const newOrder = new orderModel(orderData);
+   await newOrder.save();
+   await userModel.findByIdAndUpdate(userId, {cartData:{}})
+   response.json({success:true,message:"order placed"})
+ } catch (error) {
+     response.json({success:false,message:error.message})
+ }
 }
 
 //placing order using Stripe method
