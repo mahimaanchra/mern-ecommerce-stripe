@@ -1,13 +1,20 @@
 import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js";
+import Stripe from 'stripe';
+import razorpay from 'razorpay';
 //global variables
 const currency = "usd";
 const deliveryCharge = 10;
 
 
 //gateway initialized
-import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const razorpayInstance = new razorpay({
+    key_secret : process.env.RAZORPAY_SECRET_KEY,
+    key_id : process.env.RAZORPAY_API_KEY
+}
+)
 
 //placing orders using cod methods
 
@@ -100,7 +107,37 @@ const verifyStripe = async (req,res) => {
 //placing order using Razorpay method
 
 const placeOrderRazorpay = async (req , res) => {
+   try {
+     const {userId , items , amount , address } = req.body;
+     const orderData = {
+     userId ,
+     items , 
+     amount , 
+     address ,
+     paymentMethod:"Razorpay",
+     payment:false,
+     date:Date.now()
+    }
+    const newOrder = new orderModel(orderData);
+    await newOrder.save();
 
+    const options = {
+        amount : amount*100,
+        currency: currency.toUpperCase(),
+        receipt: newOrder._id.toString()
+    }
+
+    await razorpayInstance.orders.create(options , (error, order)=>{
+        if(error){
+            console.log(error)
+            return res.json({success:false , message:error})
+        }
+        res.json({success:true ,order})
+    })
+
+   } catch (error) {
+    response.json({success:false,message:error.message});
+   }
 }
 
 //All orders data for admin panel
