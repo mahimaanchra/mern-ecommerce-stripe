@@ -63,7 +63,10 @@ const Collection = () => {
         break;  
     }
   }
-
+useEffect(() => {
+    // Initialize filterProducts with all products as soon as products load
+    setFilterProducts(products);
+  }, [products]);
 
   useEffect(() => {
     sortProducts();

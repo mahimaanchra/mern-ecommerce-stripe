@@ -33,9 +33,9 @@ const placeOrder = async (req , res) => {
    const newOrder = new orderModel(orderData);
    await newOrder.save();
    await userModel.findByIdAndUpdate(userId, {cartData:{}})
-   response.json({success:true,message:"order placed"})
+   res.json({success:true,message:"order placed"})
  } catch (error) {
-     response.json({success:false,message:error.message})
+     res.json({success:false,message:error.message})
  }
 }
 
@@ -85,7 +85,7 @@ const placeOrderStripe = async (req , res) => {
     })
     res.json({success:true,session_url:session.url})
    } catch (error) {
-     response.json({success:false,message:error.message});
+     res.json({success:false,message:error.message});
    }
 }
 //verify Stripe
@@ -101,7 +101,7 @@ const verifyStripe = async (req,res) => {
             res.json({success:false});
         }
     } catch (error) {
-        response.json({success:false,message:error.message});
+        res.json({success:false,message:error.message});
     }
 }
 //placing order using Razorpay method
@@ -136,7 +136,7 @@ const placeOrderRazorpay = async (req , res) => {
     })
 
    } catch (error) {
-    response.json({success:false,message:error.message});
+    res.json({success:false,message:error.message});
    }
 }
 //verify razorpay
@@ -153,7 +153,7 @@ const verifyRazorpay = async(req,res) =>{
     }
     
  } catch (error) {
-    response.json({success:false,message:error.message});
+    res.json({success:false,message:error.message});
  }
 }
 
@@ -164,7 +164,7 @@ const allOrders = async(req , res) => {
         const orders = await orderModel.find({});
         res.json({success:true, orders})
     } catch (error) {
-        response.json({success:false,message:error.message})
+        res.json({success:false,message:error.message})
     }
 }
 
@@ -176,7 +176,7 @@ const userOrders = async(req , res) => {
     const orders = await orderModel.find({userId})
     res.json({success:true , orders});
    } catch (error) {
-    response.json({success:false,message:error.message})
+    res.json({success:false,message:error.message})
    }
 }
 
@@ -187,7 +187,7 @@ const userOrders = async(req , res) => {
         await orderModel.findByIdAndUpdate(orderId , {status})
         res.json({success:true,message:'Status Updated'})
     } catch (error) {
-         response.json({success:false,message:error.message})
+         res.json({success:false,message:error.message})
     }
  }
 
