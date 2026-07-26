@@ -3,10 +3,10 @@ A dynamic, production-ready full-stack e-commerce store and management system bu
 
 🚀 Live Demos
 
-<a href="https://mern-ecommerce-stripe-uonb-l8jinvfmk-mahima5681.vercel.app/" target="_blank">
+<a href="https://mern-ecommerce-stripe-uonb-5134j024o-mahima5681.vercel.app/" target="_blank">
   <img src="https://img.shields.io/badge/Live_Storefront-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Storefront" />
 </a>
-<a href="https://mern-ecommerce-stripe-1lck-gvu0xbrm9-mahima5681.vercel.app/" target="_blank">
+<a href="https://mern-ecommerce-stripe-1lck-mzbsel21d-mahima5681.vercel.app/" target="_blank">
   <img src="https://img.shields.io/badge/Admin_Dashboard-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Admin Panel" />
 </a>
 
